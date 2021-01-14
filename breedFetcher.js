@@ -34,7 +34,8 @@ const fetchBreedDescription = function(breedName, callback) {
     }
     const data = JSON.parse(body);
     if (data.length === 0) {
-      callback(null, data);
+      error = 'Requested breed is not found'
+      callback(error);
       process.exit();
     } else {
       callback(null, data[0].description);
