@@ -16,12 +16,17 @@ describe('fetchBreedDescription', () => {
     });
   });
 
-  it('returns "Requested breed not found" when invalid breed is passed', (done) => {
+  it('returns "Requested breed is not found" when invalid breed is passed', (done) => {
     fetchBreedDescription('invalid', (err, desc) => {
-      assert.equal(err, null);
+      const expectedOutput = "Requested breed is not found";
 
-      const expectedDesc = "Requested breed is not found"
-    })
+      //expect desc to be null
+      assert.equal(desc, null);
 
-  })
+      //compare returned error message
+      assert.equal(err, expectedOutput);
+
+      done();
+    });
+  });
 });
